@@ -1,18 +1,4 @@
 // Варіант 7: transform_reduce.
-//
-// Компілятор (вкажіть свій!):
-//   MSVC (Visual Studio 2022):
-//     без оптимізації : cl /EHsc /std:c++20 /utf-8 /Od main.cpp /Fe:exp_O0.exe
-//     з оптимізацією  : cl /EHsc /std:c++20 /utf-8 /O2 main.cpp /Fe:exp_O2.exe
-//   GCC / Clang (потрібна бібліотека TBB для паралельних політик):
-//     без оптимізації : g++ -std=c++20 -O0 main.cpp -o exp_O0 -ltbb
-//     з оптимізацією  : g++ -std=c++20 -O3 main.cpp -o exp_O3 -ltbb
-//
-// Запуск (перший аргумент - лише підпис рівня оптимізації для виводу):
-//   exp_O0 O0 > out_O0.txt
-//   exp_O2 O2 > out_O2.txt
-//
-// Перед запуском потрібні файли data_<N>.txt (створює generate_data.cpp).
 
 #include <algorithm>
 #include <execution>
@@ -83,7 +69,7 @@ std::vector<std::size_t> makeThreadCounts() {
 }
 
 void printTable(const std::vector<KMeasurement>& rows) {
-    const double baselineMs = rows.front().measurement.timeMs;  // K = 1
+    const double baselineMs = rows.front().measurement.timeMs;
 
     std::cout << std::setw(6) << "K" << std::setw(14) << "time, ms" << std::setw(12) << "speedup"
               << std::setw(20) << "result" << '\n';
